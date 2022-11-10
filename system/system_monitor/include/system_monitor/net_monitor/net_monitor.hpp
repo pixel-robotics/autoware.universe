@@ -40,7 +40,8 @@ typedef struct bytes
   unsigned int rx_bytes;  //!< @brief total bytes received
   unsigned int tx_bytes;  //!< @brief total bytes transmitted
 
-  bytes() : rx_bytes(0), tx_bytes(0) {}
+  bytes()
+  : rx_bytes(0), tx_bytes(0) {}
 } bytes;
 
 class NetMonitor : public rclcpp::Node
@@ -208,12 +209,13 @@ protected:
     std::deque<unsigned int> errors_queue;  //!< @brief queue that holds count of CRC errors
     unsigned int last_rx_crc_errors;  //!< @brief rx_crc_error at the time of the last monitoring
 
-    crc_errors() : last_rx_crc_errors(0) {}
+    crc_errors()
+    : last_rx_crc_errors(0) {}
   } crc_errors;
   std::map<std::string, crc_errors> crc_errors_;  //!< @brief list of CRC errors
 
   std::deque<unsigned int>
-    reassembles_failed_queue_;  //!< @brief queue that holds count of IP packet reassembles failed
+  reassembles_failed_queue_;    //!< @brief queue that holds count of IP packet reassembles failed
   uint64_t last_reassembles_failed_;  //!< @brief IP packet reassembles failed at the time of the
                                       //!< last monitoring
 

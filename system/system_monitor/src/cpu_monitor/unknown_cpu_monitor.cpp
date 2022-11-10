@@ -21,7 +21,8 @@
 
 #include <string>
 
-CPUMonitor::CPUMonitor(const rclcpp::NodeOptions & options) : CPUMonitorBase("cpu_monitor", options)
+CPUMonitor::CPUMonitor(const rclcpp::NodeOptions & options)
+: CPUMonitorBase("cpu_monitor", options)
 {
 }
 

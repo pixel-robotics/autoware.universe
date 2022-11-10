@@ -1,5 +1,4 @@
-
 /**:
   ros__parameters:
-    devices: [ wlp82s0 ]
+    devices: [wlp82s0]
     usage_warn: 0.95

@@ -283,19 +283,22 @@ int get_ata_smart_data(int fd, HddInfo * info, const HddDevice & device)
       info->is_valid_temp_ = true;
     } else if (
       data.attribute_entry_[i].attribute_id_ ==
-      device.power_on_hours_attribute_id_) {  // Power-on Hours Count
+      device.power_on_hours_attribute_id_)    // Power-on Hours Count
+    {
       info->power_on_hours_ = data.attribute_entry_[i].data_;
       info->is_valid_power_on_hours_ = true;
     } else if (
       data.attribute_entry_[i].attribute_id_ ==
-      device.total_data_written_attribute_id_) {  // Total LBAs Written
+      device.total_data_written_attribute_id_)    // Total LBAs Written
+    {
       info->total_data_written_ =
         (data.attribute_entry_[i].data_ |
-         (static_cast<uint64_t>(data.attribute_entry_[i].attribute_specific_) << 32));
+        (static_cast<uint64_t>(data.attribute_entry_[i].attribute_specific_) << 32));
       info->is_valid_total_data_written_ = true;
     } else if (
       data.attribute_entry_[i].attribute_id_ ==
-      device.recovered_error_attribute_id_) {  // Hardware ECC Recovered
+      device.recovered_error_attribute_id_)    // Hardware ECC Recovered
+    {
       info->recovered_error_ = data.attribute_entry_[i].data_;
       info->is_valid_recovered_error_ = true;
     }

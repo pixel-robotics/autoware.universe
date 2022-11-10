@@ -71,10 +71,10 @@ CPUMonitorBase::CPUMonitorBase(const std::string & node_name, const rclcpp::Node
   rclcpp::QoS durable_qos{1};
   durable_qos.transient_local();
   pub_cpu_usage_ =
-    this->create_publisher<tier4_external_api_msgs::msg::CpuUsage>("~/cpu_usage", durable_qos);
+    this->create_publisher<amr_interfaces::msg::CpuUsage>("~/cpu_usage", durable_qos);
 }
 
-void CPUMonitorBase::update() { updater_.force_update(); }
+void CPUMonitorBase::update() {updater_.force_update();}
 
 void CPUMonitorBase::checkTemp(diagnostic_updater::DiagnosticStatusWrapper & stat)
 {
@@ -121,8 +121,8 @@ void CPUMonitorBase::checkUsage(diagnostic_updater::DiagnosticStatusWrapper & st
   // Remember start time to measure elapsed time
   const auto t_start = SystemMonitorUtility::startMeasurement();
 
-  tier4_external_api_msgs::msg::CpuUsage cpu_usage;
-  using CpuStatus = tier4_external_api_msgs::msg::CpuStatus;
+  amr_interfaces::msg::CpuUsage cpu_usage;
+  using CpuStatus = amr_interfaces::msg::CpuStatus;
 
   if (!mpstat_exists_) {
     stat.summary(DiagStatus::ERROR, "mpstat error");
@@ -406,7 +406,8 @@ void CPUMonitorBase::getFreqNames()
   const fs::path root("/sys/devices/system/cpu");
 
   for (const fs::path & path :
-       boost::make_iterator_range(fs::directory_iterator(root), fs::directory_iterator())) {
+    boost::make_iterator_range(fs::directory_iterator(root), fs::directory_iterator()))
+  {
     if (!fs::is_directory(path)) {
       continue;
     }
@@ -427,12 +428,13 @@ void CPUMonitorBase::getFreqNames()
     freqs_.push_back(freq);
   }
 
-  std::sort(freqs_.begin(), freqs_.end(), [](const cpu_freq_info & c1, const cpu_freq_info & c2) {
-    return c1.index_ < c2.index_;
-  });  // NOLINT
+  std::sort(
+    freqs_.begin(), freqs_.end(), [](const cpu_freq_info & c1, const cpu_freq_info & c2) {
+      return c1.index_ < c2.index_;
+    }); // NOLINT
 }
 
-void CPUMonitorBase::publishCpuUsage(tier4_external_api_msgs::msg::CpuUsage usage)
+void CPUMonitorBase::publishCpuUsage(amr_interfaces::msg::CpuUsage usage)
 {
   // Create timestamp
   const auto stamp = this->now();

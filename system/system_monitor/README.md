@@ -1,3 +1,13 @@
+# System monitor
+
+taken from https://github.com/autowarefoundation/autoware.universe/tree/main/system/system_monitor
+
+extracted, because it originally depends on the (huge) tier4 autoware messages and some helper classes
+
+removed traffic monitor
+
+see https://lvserv01.logivations.com/browse/AMRFM-3528
+
 # System Monitor for Autoware
 
 **Further improvement of system monitor functionality for Autoware.**

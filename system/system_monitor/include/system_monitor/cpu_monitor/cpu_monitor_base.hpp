@@ -22,8 +22,8 @@
 
 #include <diagnostic_updater/diagnostic_updater.hpp>
 
-#include <tier4_external_api_msgs/msg/cpu_status.hpp>
-#include <tier4_external_api_msgs/msg/cpu_usage.hpp>
+#include <amr_interfaces/msg/cpu_status.hpp>
+#include <amr_interfaces/msg/cpu_usage.hpp>
 
 #include <climits>
 #include <map>
@@ -38,8 +38,10 @@ typedef struct cpu_temp_info
   std::string label_;  //!< @brief cpu label
   std::string path_;   //!< @brief sysfs path to cpu temperature
 
-  cpu_temp_info() : label_(), path_() {}
-  cpu_temp_info(const std::string & label, const std::string & path) : label_(label), path_(path) {}
+  cpu_temp_info()
+  : label_(), path_() {}
+  cpu_temp_info(const std::string & label, const std::string & path)
+  : label_(label), path_(path) {}
 } cpu_temp_info;
 
 /**
@@ -50,8 +52,10 @@ typedef struct cpu_freq_info
   int index_;         //!< @brief cpu index
   std::string path_;  //!< @brief sysfs path to cpu frequency
 
-  cpu_freq_info() : index_(0), path_() {}
-  cpu_freq_info(int index, const std::string & path) : index_(index), path_(path) {}
+  cpu_freq_info()
+  : index_(0), path_() {}
+  cpu_freq_info(int index, const std::string & path)
+  : index_(index), path_(path) {}
 } cpu_freq_info;
 
 class CPUMonitorBase : public rclcpp::Node
@@ -168,9 +172,9 @@ protected:
     {DiagStatus::OK, "OK"}, {DiagStatus::WARN, "unused"}, {DiagStatus::ERROR, "throttling"}};
 
   // Publisher
-  rclcpp::Publisher<tier4_external_api_msgs::msg::CpuUsage>::SharedPtr pub_cpu_usage_;
+  rclcpp::Publisher<amr_interfaces::msg::CpuUsage>::SharedPtr pub_cpu_usage_;
 
-  virtual void publishCpuUsage(tier4_external_api_msgs::msg::CpuUsage usage);
+  virtual void publishCpuUsage(amr_interfaces::msg::CpuUsage usage);
 };
 
 #endif  // SYSTEM_MONITOR__CPU_MONITOR__CPU_MONITOR_BASE_HPP_

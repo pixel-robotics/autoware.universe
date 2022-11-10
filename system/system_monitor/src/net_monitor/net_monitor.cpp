@@ -84,11 +84,11 @@ NetMonitor::NetMonitor(const rclcpp::NodeOptions & options)
   timer_ = rclcpp::create_timer(this, get_clock(), 1s, std::bind(&NetMonitor::onTimer, this));
 }
 
-NetMonitor::~NetMonitor() { shutdown_nl80211(); }
+NetMonitor::~NetMonitor() {shutdown_nl80211();}
 
-void NetMonitor::shutdown_nl80211() { nl80211_.shutdown(); }
+void NetMonitor::shutdown_nl80211() {nl80211_.shutdown();}
 
-void NetMonitor::onTimer() { updateNetworkInfoList(); }
+void NetMonitor::onTimer() {updateNetworkInfoList();}
 
 // cspell: ignore ifas, ifrm, ifrc
 void NetMonitor::updateNetworkInfoList()
@@ -127,7 +127,8 @@ void NetMonitor::updateNetworkInfoList()
     // Skip device not specified
     if (
       boost::find(device_params_, ifa->ifa_name) == device_params_.end() &&
-      boost::find(device_params_, "*") == device_params_.end()) {
+      boost::find(device_params_, "*") == device_params_.end())
+    {
       continue;
     }
 

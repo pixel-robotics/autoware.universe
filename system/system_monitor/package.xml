@@ -9,24 +9,21 @@
 
   <buildtool_depend>ament_cmake_auto</buildtool_depend>
 
-  <build_depend>autoware_cmake</build_depend>
 
   <depend>diagnostic_msgs</depend>
   <depend>diagnostic_updater</depend>
   <depend>fmt</depend>
   <depend>libnl-3-dev</depend>
+  <depend>libnl-genl-3-dev</depend>
   <depend>rclcpp</depend>
   <depend>rclcpp_components</depend>
   <depend>std_msgs</depend>
-  <depend>tier4_autoware_utils</depend>
-  <depend>tier4_external_api_msgs</depend>
+  <depend>amr_interfaces</depend>
 
-  <exec_depend>chrony</exec_depend>
   <exec_depend>sysstat</exec_depend>
 
   <test_depend>ament_cmake_ros</test_depend>
   <test_depend>ament_lint_auto</test_depend>
-  <test_depend>autoware_lint_common</test_depend>
 
   <export>
     <build_type>ament_cmake</build_type>

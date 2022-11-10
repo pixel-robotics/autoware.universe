@@ -24,7 +24,8 @@
 #include <string>
 #include <vector>
 
-CPUMonitor::CPUMonitor(const rclcpp::NodeOptions & options) : CPUMonitorBase("cpu_monitor", options)
+CPUMonitor::CPUMonitor(const rclcpp::NodeOptions & options)
+: CPUMonitorBase("cpu_monitor", options)
 {
   // There is no event record for thermal throttling.
   // Need to manually monitor temperature to figure out if thermal limits crossed or not.
