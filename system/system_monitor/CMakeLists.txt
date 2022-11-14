@@ -5,7 +5,7 @@ set (CMAKE_CXX_STANDARD 17)
 
 find_package(ament_cmake_auto REQUIRED)
 find_package(diagnostic_updater REQUIRED)
-find_package(amr_interfaces REQUIRED)
+find_package(system_monitor_interfaces REQUIRED)
 find_package(rclcpp_components REQUIRED)
 
 
@@ -128,7 +128,7 @@ set(dependencies
   ament_index_cpp
   diagnostic_updater
   rclcpp_components
-  amr_interfaces
+  system_monitor_interfaces
 )
 
 

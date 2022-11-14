@@ -22,8 +22,8 @@
 
 #include <diagnostic_updater/diagnostic_updater.hpp>
 
-#include <amr_interfaces/msg/cpu_status.hpp>
-#include <amr_interfaces/msg/cpu_usage.hpp>
+#include <system_monitor_interfaces/msg/cpu_status.hpp>
+#include <system_monitor_interfaces/msg/cpu_usage.hpp>
 
 #include <climits>
 #include <map>
@@ -172,9 +172,9 @@ protected:
     {DiagStatus::OK, "OK"}, {DiagStatus::WARN, "unused"}, {DiagStatus::ERROR, "throttling"}};
 
   // Publisher
-  rclcpp::Publisher<amr_interfaces::msg::CpuUsage>::SharedPtr pub_cpu_usage_;
+  rclcpp::Publisher<system_monitor_interfaces::msg::CpuUsage>::SharedPtr pub_cpu_usage_;
 
-  virtual void publishCpuUsage(amr_interfaces::msg::CpuUsage usage);
+  virtual void publishCpuUsage(system_monitor_interfaces::msg::CpuUsage usage);
 };
 
 #endif  // SYSTEM_MONITOR__CPU_MONITOR__CPU_MONITOR_BASE_HPP_

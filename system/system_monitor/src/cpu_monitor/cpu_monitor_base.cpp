@@ -71,7 +71,7 @@ CPUMonitorBase::CPUMonitorBase(const std::string & node_name, const rclcpp::Node
   rclcpp::QoS durable_qos{1};
   durable_qos.transient_local();
   pub_cpu_usage_ =
-    this->create_publisher<amr_interfaces::msg::CpuUsage>("~/cpu_usage", durable_qos);
+    this->create_publisher<system_monitor_interfaces::msg::CpuUsage>("~/cpu_usage", durable_qos);
 }
 
 void CPUMonitorBase::update() {updater_.force_update();}
@@ -121,8 +121,8 @@ void CPUMonitorBase::checkUsage(diagnostic_updater::DiagnosticStatusWrapper & st
   // Remember start time to measure elapsed time
   const auto t_start = SystemMonitorUtility::startMeasurement();
 
-  amr_interfaces::msg::CpuUsage cpu_usage;
-  using CpuStatus = amr_interfaces::msg::CpuStatus;
+  system_monitor_interfaces::msg::CpuUsage cpu_usage;
+  using CpuStatus = system_monitor_interfaces::msg::CpuStatus;
 
   if (!mpstat_exists_) {
     stat.summary(DiagStatus::ERROR, "mpstat error");
@@ -434,7 +434,7 @@ void CPUMonitorBase::getFreqNames()
     }); // NOLINT
 }
 
-void CPUMonitorBase::publishCpuUsage(amr_interfaces::msg::CpuUsage usage)
+void CPUMonitorBase::publishCpuUsage(system_monitor_interfaces::msg::CpuUsage usage)
 {
   // Create timestamp
   const auto stamp = this->now();

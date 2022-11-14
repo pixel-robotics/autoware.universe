@@ -18,7 +18,7 @@
   <depend>rclcpp</depend>
   <depend>rclcpp_components</depend>
   <depend>std_msgs</depend>
-  <depend>amr_interfaces</depend>
+  <depend>system_monitor_interfaces</depend>
 
   <exec_depend>sysstat</exec_depend>
 
